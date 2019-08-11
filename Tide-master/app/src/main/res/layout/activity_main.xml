@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.deepspring.lib.ui.activity.MainActivity">
+
+
+    <com.deepspring.lib.ui.widget.MyViewPager
+        android:id="@+id/viewpager"
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.deepspring.lib.ui.widget.MyViewPager>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.deepspring.lib.ui.widget.MyCircleProgress
+            android:id="@+id/circleProgress"
+            android:layout_width="@dimen/circle_width"
+            android:layout_height="@dimen/circle_height"
+            android:layout_marginTop="@dimen/circle_maTop"
+            android:layout_marginStart="@dimen/circle_maStart"
+            android:paddingStart="@dimen/circle_paStart"
+            android:paddingTop="@dimen/circle_paTop"
+            tools:ignore="RtlCompat" />
+        <TextView
+            android:id="@+id/mid_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_text"
+            android:layout_marginTop="@dimen/text_maTop"
+            android:layout_marginStart="@dimen/text_maStart"
+            android:text="欢迎"
+            android:visibility="visible"
+            tools:ignore="RtlCompat" />
+
+        <com.deepspring.lib.ui.widget.MyNumberPicker
+            android:id="@+id/num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/num_maTop"
+            android:layout_marginStart="@dimen/num_maStart"
+            android:visibility="gone"
+            tools:ignore="RtlCompat">
+        </com.deepspring.lib.ui.widget.MyNumberPicker>
+
+        <com.deepspring.lib.ui.widget.MyTimeCountDown
+            android:id="@+id/timer"
+            android:layout_width="@dimen/time_width"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/time_text"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/time_maTop"
+            android:layout_marginStart="@dimen/time_maStart"
+            android:textColor="#CCd3d6da"
+            android:visibility="gone"
+            tools:ignore="RtlCompat" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/bt_play"
+            android:background="@drawable/shape_play"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/bt_maTop"
+            android:layout_width="@dimen/bt_play_width"
+            android:layout_height="@dimen/bt_height"
+            android:text="开始专注"
+            android:soundEffectsEnabled="false"/>
+
+        <Button
+            android:id="@+id/bt_pause"
+            android:background="@drawable/shape_pause"
+            android:textSize="@dimen/button_text"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/bt_maTop"
+            android:layout_width="@dimen/bt_width"
+            android:layout_height="@dimen/bt_height"
+            android:text="暂停"
+            android:visibility="gone"
+            android:soundEffectsEnabled="false"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_continute"
+            android:background="@drawable/shape_continute"
+            android:textSize="@dimen/button_text"
+            android:layout_marginTop="@dimen/bt_maTop"
+            android:layout_marginStart="@dimen/bt_conT_maStart"
+            android:layout_width="@dimen/bt_width"
+            android:layout_height="@dimen/bt_height"
+            android:text="继续"
+            android:visibility="gone"
+            android:soundEffectsEnabled="false"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/bt_giveup"
+            android:background="@drawable/shape_pause"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="@dimen/bt_maTop"
+            android:layout_marginStart="@dimen/bt_givU_maStart"
+            android:layout_width="@dimen/bt_width"
+            android:layout_height="@dimen/bt_height"
+            android:text="放弃"
+            android:visibility="gone"
+            android:soundEffectsEnabled="false"
+            tools:ignore="RtlCompat" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/daily_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/foot_text_size"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/foot_text_maTop"
+            android:textColor="#A5FFFFFF"
+            android:textSize="@dimen/foot_text_size"
+            android:text=""/>
+    </LinearLayout>
+
+
+    <include layout="@layout/tool_bar"></include>
+
+</RelativeLayout>

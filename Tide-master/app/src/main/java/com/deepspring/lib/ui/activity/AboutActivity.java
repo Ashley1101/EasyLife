@@ -1,0 +1,94 @@
+package com.deepspring.lib.ui.activity;
+
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.view.MenuItem;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.deepspring.lib.R;
+import com.deepspring.lib.server.MusicService;
+import com.deepspring.lib.ui.widget.MyScrollView;
+import com.deepspring.lib.ui.widget.TranslucentListener;
+
+import static com.deepspring.lib.ui.activity.MainActivity.mPosition;
+
+/**
+ * todo-list:优先级2：顶部透明没效果，自定义滑动效果微调
+ * todo-list:优先级3：底部导航颜色、位置
+ * todo-list:优先级4：navBt全屏幕时的点击事件
+ */
+public class AboutActivity extends AppCompatActivity implements TranslucentListener {
+
+
+    private Toolbar mToolbar;
+    private MyScrollView mScrollView;
+    private MusicService mMusicService;
+
+    private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            mMusicService = ((MusicService.MyBinder)iBinder).getMusicService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            mMusicService = null;
+        }
+    };
+
+    private void bindServiceConnection() {
+        Intent intent = new Intent(this, MusicService.class);
+        intent.putExtra("position",mPosition);
+        startService(intent);
+        bindService(intent, conn, this.BIND_AUTO_CREATE);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about_2);
+
+        mToolbar = findViewById(R.id.toolbar);
+        mToolbar.setTitle("关于");
+        mToolbar.setAlpha(1f);
+        setSupportActionBar(mToolbar);
+
+        ActionBar mActionBar = getSupportActionBar();
+        if(mActionBar != null) {
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        mScrollView = (MyScrollView) findViewById(R.id.scrollView);
+        mScrollView.setTranslucentListener(this);
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void onTranlucent(float alpha,int color, int textColor) {
+        mToolbar.setAlpha(1-alpha);
+        mToolbar.setBackgroundColor(color);
+        mToolbar.setTitleTextColor(textColor);
+    }
+
+}

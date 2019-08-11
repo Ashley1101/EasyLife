@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Tide-master.iml" filepath="$PROJECT_DIR$/Tide-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base-lib-notification/base-lib-notification.iml" filepath="$PROJECT_DIR$/base-lib-notification/base-lib-notification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib-jlogger/lib-jlogger.iml" filepath="$PROJECT_DIR$/lib-jlogger/lib-jlogger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib-todaystepcounter/lib-todaystepcounter.iml" filepath="$PROJECT_DIR$/lib-todaystepcounter/lib-todaystepcounter.iml" />
+    </modules>
+  </component>
+</project>
